@@ -14,7 +14,6 @@ var audioContext = new window.AudioContext || new webkitAudioContext();
 export default class SonicSocket extends React.Component {
   constructor(props) {
     super(props);
-    this.coder = this.props.coder || new SonicCoder();
     this.charDuration = this.props.charDuration || 0.2;
     this.coder = this.props.coder || new SonicCoder(this.props);
     this.rampDuration = this.props.rampDuration || 0.001;
@@ -70,8 +69,8 @@ export default class SonicSocket extends React.Component {
   render() {
     return(
         <div>
-          Example Sonic Socket
-          <button onClick={this.send}>Send</button>
+          <p>Example Sonic Socket</p>
+          <button onClick={this.send}>Send Message</button>
         </div>
       );  
   }

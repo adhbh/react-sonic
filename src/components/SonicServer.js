@@ -34,7 +34,8 @@ export default class SonicServer extends React.Component {
     this.isRunning = false;
     this.iteration = 0;
     this.state = {
-      isRecv: false
+      isRecv: false,
+      message: null
     }
 
     this.start = this.start.bind(this);
@@ -318,13 +319,18 @@ export default class SonicServer extends React.Component {
   componentDidMount() {
     this.on('message', function(message) {
       console.log(message);
-    });
+      this.setState({message:message});
+    }.bind(this));
     this.start();
   }
 
   render() {
     return (
-        <div>Sonic Server (Check console for messages)</div>
+        <div>
+          <p>Sonic Server Component</p>
+          <p>Status: {this.state.isRecv ? "Receiving Message" : "Idle"}</p>
+          <p>{this.state.message}</p>
+        </div>
       );
   }
 }

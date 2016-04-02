@@ -7,14 +7,18 @@ export default class App extends React.Component {
 	render () {
 		const duration = 0.2;
 		const alphabet = '0123456789abcdefghijklmnopqrstuvwxyz ';
-		const message = 'react is fun';
+		const message = 'react sonic is fun';
 		return (
-				<div className = {styles.content} >
-					<h1 className = {styles.hello} >Hello React Sonic</h1>
-					<SonicSocket alphabet={alphabet} charDuration = {duration} message = {message} />
-					
-					//On some other machine
-					<SonicServer alphabet={alphabet} />
+				<div className = {styles.container} >
+					<h1 className = {styles.hello} >React Sonic</h1>
+					<div className={styles.box}>
+						<div className={styles.inner}>
+							<SonicSocket alphabet={alphabet} charDuration = {duration} message = {message} />
+						</div>
+						<div className={styles.inner}>
+							<SonicServer alphabet={alphabet} />
+						</div>
+					</div>
 				</div>
 			);
 	}
